@@ -17,16 +17,15 @@ namespace SimpleEasyRepro
                 PrivateMode = true
             };
 
-            var username = "@.onmicrosoft.com";
-            var password = "";
-            var xrmUri = new Uri("https://.crm.dynamics.com");
+            var username = "username@yourorg.onmicrosoft.com";
+            var password = "yourpassword";
+            var xrmUri = new Uri("https://yourorganisationname.crm.dynamics.com");
 
             var client = new WebClient(Options);
             using (var xrmApp = new XrmApp(client))
             {
                 xrmApp.OnlineLogin.Login(xrmUri, username.ToSecureString(), password.ToSecureString());
                 xrmApp.Navigation.OpenApp("Sales Hub");
-                xrmApp.Navigation.OpenSubArea("Sales", "Accounts");
             }
         }
     }
